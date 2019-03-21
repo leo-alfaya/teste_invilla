@@ -1,0 +1,37 @@
+$menu-height: 150px;
+
+.game-container {
+    width: 100%;
+    height: 100%;
+    .header {
+        height: 150px;
+        background-color: black;
+    }
+    .content {
+        height: calc(100% - #{$menu-height});
+        .lista-personagens {
+            height: 90%;
+            padding: 50px;
+
+            .card-personagem {
+                width: 100%;
+
+                .img-personagem {
+                    height: 150px;
+                }
+                .acoes {
+                    height: 100px;
+                    justify-content: space-evenly;
+
+                    .acao-button {
+                        background-color: white;
+                    }
+                }
+            }
+
+        }
+        .pagination {
+            height: 10%;
+        }
+    }
+}
