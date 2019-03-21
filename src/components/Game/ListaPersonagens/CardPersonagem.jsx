@@ -18,11 +18,11 @@ const CardPersonagem = () => {
                     image={'img/star_wars.jpg'}
                 />
                 <CardActions className="acoes">
-                    <Fab size="large" className="acao-button">
-                        <Help />
+                    <Fab variant="extended" size="large" className="acao-button">
+                       <span>?</span>
                     </Fab>
-                    <Fab size="large">
-                        <MoreOriz />
+                    <Fab variant="extended" size="large" className="acao-button">
+                       <span>...</span>
                     </Fab>
                 </CardActions>
             </Card>

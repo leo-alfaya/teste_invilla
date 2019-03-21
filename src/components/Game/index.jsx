@@ -2,6 +2,7 @@ import React from 'react';
 import './Game.scss';
 import Grid from '@material-ui/core/Grid';
 import ListaPersonagens from './ListaPersonagens/index'
+import { getAll } from '../../api/api_personagens'
 
 const Game = () => {
     return (
