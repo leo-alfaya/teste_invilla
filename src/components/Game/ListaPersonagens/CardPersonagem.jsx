@@ -5,11 +5,8 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import Fab from '@material-ui/core/Fab';
-import Help from '@material-ui/icons/Help';
-import MoreOriz from '@material-ui/icons/MoreHoriz';
-import grey from '@material-ui/core/colors/grey';
 
-const CardPersonagem = () => {
+const CardPersonagem = ({ name }) => {
     return (
         <Grid item xs={3}>
             <Card className="card-personagem">
@@ -18,16 +15,23 @@ const CardPersonagem = () => {
                     image={'img/star_wars.jpg'}
                 />
                 <CardActions className="acoes">
-                    <Fab variant="extended" size="large" className="acao-button">
+                    
+                    <Fab variant="extended" size="large" className="button">
                        <span>?</span>
                     </Fab>
-                    <Fab variant="extended" size="large" className="acao-button">
+                    <Fab variant="extended" size="large" className="button">
+                       <span>{name}</span>
+                    </Fab>
+                    <Fab variant="extended" size="large" className="button">
                        <span>...</span>
                     </Fab>
                 </CardActions>
             </Card>
         </Grid>
     )
+}
+
+CardPersonagem.propTypes = {
 }
 
 export default CardPersonagem

@@ -1,5 +1,5 @@
-export const getAll = (cb) => {
-    fetch('https://swapi.co/api/people/1/')
+export const getPeople = (url, cb) => {
+    fetch(url)
         .then(response => response.json())
         .then(json => cb(json))
 }

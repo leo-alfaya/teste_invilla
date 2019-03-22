@@ -1,0 +1,3 @@
+const addNewPeople = (all, new) => {
+
+}

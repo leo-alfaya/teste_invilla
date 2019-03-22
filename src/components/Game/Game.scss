@@ -8,9 +8,8 @@ $menu-height: 150px;
         background-color: black;
     }
     .content {
-        height: calc(100% - #{$menu-height});
+        min-height: calc(100% - #{$menu-height});
         .lista-personagens {
-            height: 90%;
             padding: 50px;
 
             .card-personagem {
@@ -22,24 +21,22 @@ $menu-height: 150px;
                 .acoes {
                     height: 100px;
                     justify-content: space-evenly;
-
-                    .acao-button {
-                        background-color: white;
-                        color: black;
-                        font-weight: 900;
-                        font-size: 20px;
-
-                        &:hover {
-                            background-color: black;
-                            color: white;
-                        }
-                    }
                 }
             }
-
         }
         .pagination {
             height: 10%;
+        }
+    }
+    .button {
+        background-color: white;
+        color: black;
+        font-weight: 900;
+        font-size: 20px;
+
+        &:hover {
+            background-color: black;
+            color: white;
         }
     }
 }
