@@ -1,16 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { ModalInfoContext }  from '../../Modal/ModalInfo'
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import Fab from '@material-ui/core/Fab';
 
-const CardPersonagem = ({ name, openInfo }) => {
-    const modalInfoContext = useContext(ModalInfoContext)
-
-    console.log(modalInfoContext)
+const CardPersonagem = ({ name }) => {
     return (
         <Grid item xs={3}>
             <Card className="card-personagem">
