@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import CardPersonagem from './CardPersonagem';
 
-const ListaPersonagens = ({ personagens }) => {
+const ListaPersonagens = ({ personagens, setRespostas }) => {
     return (
         <Grid container className="lista-personagens" justify="center" spacing={32}>
             {personagens.map(personagem => {
@@ -18,7 +18,8 @@ const ListaPersonagens = ({ personagens }) => {
 }
 
 ListaPersonagens.propTypes = {
-    personagens: PropTypes.array
+    personagens: PropTypes.array,
+    setRespostas: PropTypes.func
 }
 
 ListaPersonagens.defaultProps = {
