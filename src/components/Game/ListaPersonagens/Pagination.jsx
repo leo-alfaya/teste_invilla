@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 
-const Pagination = ({ prev, next, changePage }) => {
+const Pagination = ({ previous, next, changePage }) => {
     const renderButton = (url, event, text) => {
         if(url) {
             return (
@@ -16,13 +16,13 @@ const Pagination = ({ prev, next, changePage }) => {
     }
 
     const handleClick = {
-        prevPage: () => changePage(prev, "prev"),
+        prevPage: () => changePage(previous, "prev"),
         nextPage: () => changePage(next, "next")
     }
 
     return (
         <Grid container className="pagination" justify="center" spacing={32}>
-            {renderButton(prev, "prevPage", "Página Anterior")}
+            {renderButton(previous, "prevPage", "Página Anterior")}
             {renderButton(next, "nextPage", "Próxima Página")}
         </Grid>
     )

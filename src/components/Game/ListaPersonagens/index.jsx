@@ -10,7 +10,7 @@ const ListaPersonagens = ({ personagens, setRespostas }) => {
                 return (
                     <CardPersonagem 
                         key={ personagem.name }
-                        { ...personagem }/>
+                        personagem={ personagem }/>
                 )
             })}
         </Grid>

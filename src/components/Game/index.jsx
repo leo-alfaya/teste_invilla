@@ -1,55 +1,64 @@
-import React, { useState, useEffect} from 'react';
+import React, { Fragment, useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import './Game.scss';
+import { getPersonagens } from  '../../actions/personagensActions' 
 import Grid from '@material-ui/core/Grid';
 import ListaPersonagens from './ListaPersonagens/index';
 import Pagination from './ListaPersonagens/Pagination';
 import ModalInfo from '../Modal/ModalInfo';
-import { getPeople } from '../../api/api_personagens';
 
-const Game = () => {
-    const [ respostas, setRespostas ] = useState({})
-    const [ personagens, setPersonagens ] = useState({})
+const Game = ({ personagens, getPersonagens }) => {
     const [ loaded, setLoaded ] = useState(false)
 
     useEffect(() => {
         if(!loaded){
-            getPeople(
-                'https://swapi.co/api/people/?page=1',
-                (people) => {
-                    setPersonagens(people)
-                    setLoaded(true);
-                }
-            );
+            getPersonagens('https://swapi.co/api/people/?page=1')
+            setLoaded(true)
         }
     });
 
-    const changePage = (page, event) => {
-        getPeople(
-            page,
-            (people) => {
-                setPersonagens(people)
-            }
-        );
+    const changePage = (page) => {
+        getPersonagens(page);
     }
 
     return (
-        <Grid container className="game-container">
-            <Grid container className="header"/>
-            <Grid container className="content">
-                <ListaPersonagens 
-                    personagens={ personagens.results }
-                    setRespostas={ setRespostas }
-                />
-                <Pagination 
-                    prev={ personagens.previous }
-                    next={ personagens.next }
-                    changePage={changePage}
-                />
+        <Fragment>
+            <Grid container className="game-container">
+                <Grid container className="header"/>
+                    <Grid container className="content">
+                        <ListaPersonagens personagens={personagens.results}/>
+                        <Pagination 
+                            next={personagens.next}
+                            previous={personagens.previous}
+                            changePage={changePage}/>
+                    </Grid>
             </Grid>
-
             <ModalInfo />
-        </Grid>
+        </Fragment>
     )
 }
 
-export default Game
+Game.propTypes = {
+    personagens: PropTypes.object,
+    getPersonagens: PropTypes.func
+}
+
+const mapStateToProps = state => {
+    return {
+        personagens: state.personagens.list
+    }
+}
+
+const mapDispatchToProps = dispatch => 
+    bindActionCreators({ getPersonagens }, dispatch)
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    null,
+    {
+        pure: false
+    }
+)(Game);

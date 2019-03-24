@@ -1,34 +1,80 @@
-import React, { useState, Fragment } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { closeModalInfo } from '../../actions/modaisActions';
+import { 
+    getSpecies,
+    getPlanet,
+    getMovies,
+    getVehicles,
+    clearDetalhes
+} from '../../actions/personagensActions';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 
-const ModalInfo = ({ open, personagem }) => {
-    const [ open, setOpen ] = useState(open)
+const ModalInfo = (props) => {
+    const {
+        modalInfo: {
+            open,
+            personagem
+        },
+        detalhesPersonagem,
+        closeModalInfo,
+        clearDetalhes,
+        getSpecies,
+        getPlanet,
+        getMovies,
+        getVehicles
+    } = props
 
-    const handleClose = () => {
-        setOpen(false)
+    const {
+        species
+    } = personagem
+
+    const handleEnter = () => {
+        if(personagem.species.length){
+            getSpecies(personagem.species)
+        }
+
+        if(personagem.homeworld.length) {
+            getPlanet(personagem.homeworld)
+        }
+
+        if(personagem.films.length) {
+            getMovies(personagem.films)
+        }
+
+        if(personagem.vehicles.length) {
+            getVehicles(personagem.vehicles)
+        }
+    }
+
+    const handleExit = () => {
+        clearDetalhes()
     }
 
     return (
         <Dialog
             open={open}
-            onClose={handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
+            onClose={closeModalInfo}
+            onEnter={handleEnter}
+            onExit={handleExit}
         >
-            <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+            <DialogTitle>{"Detalhes do Personagem"}</DialogTitle>
             <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                    Let Google help apps determine location. This means sending anonymous location data to
-                    Google, even when no apps are running.
-                </DialogContentText>
+                <p>{`Specie: ${detalhesPersonagem.species}`}</p>
+                <p>{`Height: ${personagem.height}`}</p>
+                <p>{`Hair: ${personagem.hair_color}`}</p>
+                <p>{`Planet: ${detalhesPersonagem.homeworld}`}</p>
+                <p>{`Movies: ${detalhesPersonagem.movies}`}</p>
+                <p>{`Vehicles: ${detalhesPersonagem.vehicles || "none"}`}</p>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose} color="primary">
+                <Button color="primary" fullWidth={true} onClick={ closeModalInfo }>
                     Voltar ao game
                 </Button>
             </DialogActions>
@@ -36,4 +82,34 @@ const ModalInfo = ({ open, personagem }) => {
     )
 }
 
-export default ModalInfo
+ModalInfo.propTypes = {
+    modalInfo: PropTypes.object,
+    closeModalInfo: PropTypes.func
+}
+
+
+const mapStateToProps = state => {
+    return {
+        modalInfo: state.modalInfo,
+        detalhesPersonagem: state.personagens.detalhesPersonagem
+    }
+}
+
+const mapDispatchToProps = dispatch => 
+    bindActionCreators({ 
+        getSpecies,
+        getPlanet,
+        getMovies,
+        getVehicles,
+        closeModalInfo,
+        clearDetalhes
+    }, dispatch)
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    null,
+    {
+        pure: false
+    }
+)(ModalInfo);
