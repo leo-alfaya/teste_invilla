@@ -12,7 +12,7 @@ import ModalInfo from '../Modal/ModalInfo';
 import ModalResposta from '../Modal/ModalResposta';
 import ModalResultado from '../Modal/ModalResultado';
 
-const Game = ({ personagens, getPersonagens }) => {
+const Game = ({ personagens, getPersonagens, history }) => {
     const [ loaded, setLoaded ] = useState(false)
 
     useEffect(() => {
@@ -40,7 +40,7 @@ const Game = ({ personagens, getPersonagens }) => {
             </Grid>
             <ModalInfo />
             <ModalResposta />
-            <ModalResultado />
+            <ModalResultado history={history}/>
         </Fragment>
     )
 }

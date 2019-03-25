@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -15,8 +16,10 @@ const ModalResultado = (props) => {
         modalResultado: {
             open
         },
-        respostas
+        respostas,
+        history
     } = props
+    console.log(props)
 
     const [ resultado, setResultado ] = useState(0);
     const [ nome, setNome ] = useState("");
@@ -46,6 +49,8 @@ const ModalResultado = (props) => {
         }
 
         ls.set(nome, value);
+        history.push("/");
+
     }
 
     return (
