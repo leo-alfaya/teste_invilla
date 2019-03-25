@@ -15,7 +15,7 @@ export const getPersonagens = (page) => {
 
 export const getSpecies = (urls) => {
     return dispatch => {
-        let species = Promise.all(urls.map(url => fetch(url)))
+        Promise.all(urls.map(url => fetch(url)))
             .then(response => Promise.all(response.map(r => r.json())))
             .then(json => {
                 if(json.length <= 1) {
@@ -45,7 +45,7 @@ export const getPlanet = (url) => {
 
 export const getMovies = (urls) => {
     return dispatch => {
-        let movies = Promise.all(urls.map(url => fetch(url)))
+        Promise.all(urls.map(url => fetch(url)))
             .then(response => Promise.all(response.map(r => r.json())))
             .then(json => {
                 if(json.length <= 1) {
@@ -65,7 +65,7 @@ export const getMovies = (urls) => {
 
 export const getVehicles = (urls) => {
     return dispatch => {
-        let vehicles = Promise.all(urls.map(url => fetch(url)))
+        Promise.all(urls.map(url => fetch(url)))
             .then(response => Promise.all(response.map(r => r.json())))
             .then(json => {
                 if(json.length <= 1) {

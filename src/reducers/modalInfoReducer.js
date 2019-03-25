@@ -1,7 +1,7 @@
 import {
     OPEN_MODAL_INFO,
-    CLOSE_MODAL_INFO
-} from '../actions/modaisActions';
+    CLOSE_MODAL_INFO,
+} from '../actions/modalInfoActions';
 
 const initialState = {
     open: false,

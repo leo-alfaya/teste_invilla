@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { closeModalInfo } from '../../actions/modaisActions';
+import { closeModalInfo } from '../../actions/modalInfoActions';
 import { 
     getSpecies,
     getPlanet,
@@ -31,10 +31,6 @@ const ModalInfo = (props) => {
         getVehicles
     } = props
 
-    const {
-        species
-    } = personagem
-
     const handleEnter = () => {
         if(personagem.species.length){
             getSpecies(personagem.species)
@@ -59,19 +55,19 @@ const ModalInfo = (props) => {
 
     return (
         <Dialog
-            open={open}
-            onClose={closeModalInfo}
-            onEnter={handleEnter}
-            onExit={handleExit}
+            open= {open }
+            onClose={ closeModalInfo}
+            onEnter={ handleEnter }
+            onExit={ handleExit }
         >
             <DialogTitle>{"Detalhes do Personagem"}</DialogTitle>
             <DialogContent>
-                <p>{`Specie: ${detalhesPersonagem.species}`}</p>
-                <p>{`Height: ${personagem.height}`}</p>
-                <p>{`Hair: ${personagem.hair_color}`}</p>
-                <p>{`Planet: ${detalhesPersonagem.homeworld}`}</p>
-                <p>{`Movies: ${detalhesPersonagem.movies}`}</p>
-                <p>{`Vehicles: ${detalhesPersonagem.vehicles || "none"}`}</p>
+                <p>{ `Specie: ${detalhesPersonagem.species}` }</p>
+                <p>{ `Height: ${personagem.height}` }</p>
+                <p>{ `Hair: ${personagem.hair_color}` }</p>
+                <p>{ `Planet: ${detalhesPersonagem.homeworld}` }</p>
+                <p>{ `Movies: ${detalhesPersonagem.movies}` }</p>
+                <p>{ `Vehicles: ${detalhesPersonagem.vehicles || "none"}` }</p>
             </DialogContent>
             <DialogActions>
                 <Button color="primary" fullWidth={true} onClick={ closeModalInfo }>

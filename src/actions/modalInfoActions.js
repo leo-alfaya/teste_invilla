@@ -13,3 +13,4 @@ export const closeModalInfo = () => {
         type: CLOSE_MODAL_INFO,
     }
 }
+

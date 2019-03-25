@@ -5,7 +5,6 @@ $menu-height: 150px;
     height: 100%;
     .header {
         height: 150px;
-        background-color: black;
     }
     .content {
         min-height: calc(100% - #{$menu-height});
@@ -38,5 +37,13 @@ $menu-height: 150px;
             background-color: black;
             color: white;
         }
+    }
+}
+
+.modal-resultado {
+    text-align: center;
+
+    .input-text {
+        margin-top: 30px;
     }
 }

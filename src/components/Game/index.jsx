@@ -5,9 +5,12 @@ import { connect } from 'react-redux';
 import './Game.scss';
 import { getPersonagens } from  '../../actions/personagensActions' 
 import Grid from '@material-ui/core/Grid';
+import Header from './Header/index';
 import ListaPersonagens from './ListaPersonagens/index';
 import Pagination from './ListaPersonagens/Pagination';
 import ModalInfo from '../Modal/ModalInfo';
+import ModalResposta from '../Modal/ModalResposta';
+import ModalResultado from '../Modal/ModalResultado';
 
 const Game = ({ personagens, getPersonagens }) => {
     const [ loaded, setLoaded ] = useState(false)
@@ -26,16 +29,18 @@ const Game = ({ personagens, getPersonagens }) => {
     return (
         <Fragment>
             <Grid container className="game-container">
-                <Grid container className="header"/>
-                    <Grid container className="content">
-                        <ListaPersonagens personagens={personagens.results}/>
-                        <Pagination 
-                            next={personagens.next}
-                            previous={personagens.previous}
-                            changePage={changePage}/>
-                    </Grid>
+                <Header />
+                <Grid container className="content">
+                    <ListaPersonagens personagens={personagens.results}/>
+                    <Pagination 
+                        next={personagens.next}
+                        previous={personagens.previous}
+                        changePage={changePage}/>
+                </Grid>
             </Grid>
             <ModalInfo />
+            <ModalResposta />
+            <ModalResultado />
         </Fragment>
     )
 }

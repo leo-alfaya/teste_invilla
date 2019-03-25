@@ -1,10 +1,16 @@
 import { combineReducers } from 'redux';
 import { personagensReducer } from './personagensReducer';
-import { modalInfo } from './modaisReducers';
+import { respostasReducer } from './respostasReducer';
+import { modalInfo } from './modalInfoReducer';
+import { modalResposta } from './modalRespostaReducer';
+import { modalResultado } from './modalResultadoReducer';
 
 const rootReducers = combineReducers({
     personagens: personagensReducer,
-    modalInfo
+    respostas: respostasReducer,
+    modalInfo,
+    modalResposta,
+    modalResultado
 })
 
 export default rootReducers
