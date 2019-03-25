@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ls from 'local-storage';
+import { closeModalResultado } from '../../actions/modalResultadoActions';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -15,7 +17,8 @@ const ModalResultado = (props) => {
             open
         },
         respostas,
-        history
+        history,
+        closeModalResultado
     } = props
 
     const [ resultado, setResultado ] = useState(0);
@@ -46,6 +49,7 @@ const ModalResultado = (props) => {
         }
 
         ls.set(nome, value);
+        closeModalResultado();
         history.push("/");
 
     }
@@ -87,8 +91,14 @@ const ModalResultado = (props) => {
 ModalResultado.propTypes = {
         modalResultado: PropTypes.object,
         respostas: PropTypes.array,
-        history: PropTypes.object
+        history: PropTypes.object,
+        closeModalResultado: PropTypes.func
 }
+
+const mapDispatchToProps = dispatch => 
+    bindActionCreators({ 
+        closeModalResultado,
+    }, dispatch)
 
 
 const mapStateToProps = state => {
@@ -100,7 +110,7 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    null, 
+    mapDispatchToProps, 
     null,
     {
         pure: false
