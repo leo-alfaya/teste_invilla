@@ -47,7 +47,9 @@ const Game = ({ personagens, getPersonagens, history }) => {
 
 Game.propTypes = {
     personagens: PropTypes.object,
-    getPersonagens: PropTypes.func
+    getPersonagens: PropTypes.func,
+    history: PropTypes.object
+
 }
 
 const mapStateToProps = state => {

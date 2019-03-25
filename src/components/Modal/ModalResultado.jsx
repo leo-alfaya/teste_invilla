@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ls from 'local-storage';
 import Dialog from '@material-ui/core/Dialog';
@@ -19,7 +17,6 @@ const ModalResultado = (props) => {
         respostas,
         history
     } = props
-    console.log(props)
 
     const [ resultado, setResultado ] = useState(0);
     const [ nome, setNome ] = useState("");
@@ -88,8 +85,9 @@ const ModalResultado = (props) => {
 }
 
 ModalResultado.propTypes = {
-    modalInfo: PropTypes.object,
-    closeModalInfo: PropTypes.func
+        modalResultado: PropTypes.object,
+        respostas: PropTypes.array,
+        history: PropTypes.object
 }
 
 
