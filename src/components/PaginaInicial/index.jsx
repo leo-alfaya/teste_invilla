@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 
 const PaginaInicial = () => {
     return (
-        <Grid container justify="center" align-items="center" direction="column" className="pagina-inicial">
+        <Grid container justify="center" alignItems="center" direction="column" className="pagina-inicial">
             <Grid item xs={10} className="titulo">
                 <Grid container justify="center">
                     <h1 className="titulo">STAR QUIZ</h1>
