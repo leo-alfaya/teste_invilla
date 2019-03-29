@@ -7,7 +7,7 @@ import { openModalResultado } from '../../actions/modalResultadoActions';
 
 const setTempoTermino = () => {
     let tempo = new Date();
-    tempo = tempo.setSeconds(tempo.getSeconds() + 10);
+    tempo = tempo.setMinutes(tempo.getMinutes() + 2);
 
     return tempo
 }
