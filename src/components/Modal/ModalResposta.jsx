@@ -29,7 +29,7 @@ const ModalResposta = (props) => {
     }
 
     const handleEnterKey = ({ keyCode }) => {
-        if(keyCode == 13){
+        if(keyCode === 13){
             enviaResposta();
         }
     }
@@ -80,6 +80,8 @@ const ModalResposta = (props) => {
 
 ModalResposta.propTypes = {
     modalResposta: PropTypes.object,
+    closeModalResposta: PropTypes.func,
+    addResposta: PropTypes.func
 }
 
 

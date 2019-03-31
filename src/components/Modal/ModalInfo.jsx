@@ -80,7 +80,13 @@ const ModalInfo = (props) => {
 
 ModalInfo.propTypes = {
     modalInfo: PropTypes.object,
-    closeModalInfo: PropTypes.func
+    detalhesPersonagem: PropTypes.object,
+    closeModalInfo: PropTypes.func,
+    clearDetalhes: PropTypes.func,
+    getSpecies: PropTypes.func,
+    getPlanet: PropTypes.func,
+    getMovies: PropTypes.func,
+    getVehicles: PropTypes.func
 }
 
 

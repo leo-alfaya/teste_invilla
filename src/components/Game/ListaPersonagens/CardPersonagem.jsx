@@ -48,6 +48,7 @@ const CardPersonagem = ({ personagem, disabled, openModalInfo, openModalResposta
 
 CardPersonagem.propTypes = {
     personagem: PropTypes.object,
+    disabled: PropTypes.bool,
     openModalInfo: PropTypes.func,
     openModalResposta: PropTypes.func
 }

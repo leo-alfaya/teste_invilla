@@ -51,7 +51,6 @@ export const getMovies = (urls) => {
                 if(json.length <= 1) {
                     dispatch(setDetalhes("movies", json[0].name))
                 } else {
-                    console.log(json)
                     dispatch(
                         setDetalhes(
                             "movies", 

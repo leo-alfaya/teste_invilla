@@ -7,9 +7,7 @@ import CardPersonagem from './CardPersonagem';
 const ListaPersonagens = (props) => {
     const {
         personagens,
-        respostas,
         personagens_respondidos,
-        setRespostas
     } = props
 
     return (
@@ -40,7 +38,7 @@ const ListaPersonagens = (props) => {
 
 ListaPersonagens.propTypes = {
     personagens: PropTypes.array,
-    setRespostas: PropTypes.func
+    personagens_respondidos: PropTypes.array,
 }
 
 ListaPersonagens.defaultProps = {
