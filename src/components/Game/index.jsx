@@ -12,7 +12,7 @@ import ModalInfo from '../Modal/ModalInfo';
 import ModalResposta from '../Modal/ModalResposta';
 import ModalResultado from '../Modal/ModalResultado';
 
-const Game = ({ personagens, getPersonagens }) => {
+export const Game = ({ personagens, getPersonagens }) => {
     const [ loaded, setLoaded ] = useState(false)
 
     useEffect(() => {
